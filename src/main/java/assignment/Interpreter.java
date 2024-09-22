@@ -13,30 +13,26 @@ import java.lang.*;
  */
 public class Interpreter implements CritterInterpreter {
 
-	private boolean bool;
+	private static boolean bool;
 
-	public static void main(String args[]){
-		loadSpecies("FlyTrap.cri");
-	}
 	public static void executeCritter(Critter c) {
 		// obviously, your code should do something
-		String code = c.getCode();
-		int startIdx = code.getNextCodeLine();
+		List code = c.getCode();
+		int startIdx = c.getNextCodeLine();
 		bool = false;
 		for (int i = startIdx; i < code.size(); i++) {
-			String line = code.get(i);
-			String[] arr = line.split(" ");
-			String str = arr[0];
-			i = executeCode(c, str, i);
+			String line = (String) code.get(i);
+			i = executeCode(c, line, i);
 			if (bool) {
 				c.setNextCodeLine(i + 1);
 				return;
 			}
 		}
-		return;
 	}
 
-	private int executeCode(Critter c, String str, int i) {
+	private static int executeCode(Critter c, String line, int i) {
+		String[] arr = line.split(" ");
+		String str = arr[0];
 		int idx = i;
 		switch(str) {
 			case "hop":
@@ -131,17 +127,17 @@ public class Interpreter implements CritterInterpreter {
 				c.setReg(Integer.parseInt(arr[-1]), c.getReg(Integer.parseInt(arr[-1])) - 1);
 				break;
 			case "iflt":
-				if (c.getReg(arr[1]) < c.getReg(arr[2])){
+				if (c.getReg(Integer.parseInt(arr[1])) < c.getReg(Integer.parseInt(arr[2]))) {
 					idx = Integer.parseInt(arr[-1]) - 1;
 				}
 				break;
 			case "ifeq":
-				if (c.getReg(arr[1]) == c.getReg(arr[2])){
+				if (c.getReg(Integer.parseInt(arr[1])) == c.getReg(Integer.parseInt(arr[2]))) {
 					idx = Integer.parseInt(arr[-1]) - 1;
 				}
 				break;
 			case "ifgt":
-				if (c.getReg(arr[1]) > c.getReg(arr[2])){
+				if (c.getReg(Integer.parseInt(arr[1])) > c.getReg(Integer.parseInt(arr[2]))) {
 					idx = Integer.parseInt(arr[-1]) - 1;
 				}
 				break;
@@ -152,17 +148,22 @@ public class Interpreter implements CritterInterpreter {
 	public static CritterSpecies loadSpecies(String filename) throws IOException {
 		// obviously, your code should do something
 		ArrayList<String> code = new ArrayList<String>();
-		FileReader fileReader = new FileReader(inputFilename);
-		BufferedReader reader = new BufferedReader(fileReader);
-		String name = reader.readLine();
-		String line;
-		while(!(line = reader.readLine()).equals("")) {
-			code.add(line);
+		try {
+			FileReader fileReader = new FileReader(filename);
+			BufferedReader reader = new BufferedReader(fileReader);
+			String name = reader.readLine();
+			String line;
+			while (!(line = reader.readLine()).equals("")) {
+				code.add(line);
+			}
+			for (int i = 0; i < code.size(); i++) {
+				System.out.println(code.get(i));
+			}
+			CritterSpecies crit = new CritterSpecies(name, code);
+			return crit;
+		} catch (Exception e) {
+			System.err.println(e);
+			return null;
 		}
-		for(int i = 0; i < code.size(); i++) {
-			System.out.println(code.get(i));
-		}
-		CritterSpecies crit = new CritterSpecies(name, code);
-		return crit;
 	}
 }
