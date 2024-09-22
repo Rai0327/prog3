@@ -3,6 +3,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
+
 /**
  * Responsible for loading critter species from text files and interpreting the
  * simple Critter language.
@@ -64,15 +65,84 @@ public class Interpreter implements CritterInterpreter {
 				break;
 			case "go":
 				if (arr[-1].substring(0, 1).equals("+")) {
-					idx += Integer.parseInt(arr[-1].substring(1));
-					idx--;
+					idx += Integer.parseInt(arr[-1].substring(1)) - 1;
 				} else if (arr[-1].substring(0, 1).equals("-")) {
-					idx -= Integer.parseInt(arr[-1].substring(1));
-					idx--;
+					idx -= Integer.parseInt(arr[-1].substring(1)) - 1;
 				} else if (arr[-1].substring(0, 1).equals("r")) {
-					executeCode(c, c.getReg(arr[-1], idx));
+					idx = c.getReg(Integer.parseInt(arr[-1].substring(1))) - 1;
 				} else {
-					idx = Integer.parseInt(arr[-1]);
+					idx = Integer.parseInt(arr[-1]) - 1;
+				}
+				break;
+			case "ifrandom":
+				if(c.ifRandom()) {
+					idx = Integer.parseInt(arr[-1]) - 1;
+				}
+				break;
+			case "ifhungry":
+				if (c.getHungerLevel() == Critter.HungerLevel.valueOf("HUNGRY")
+						|| c.getHungerLevel() == Critter.HungerLevel.valueOf("STARVING")) {
+					idx = Integer.parseInt(arr[-1]) - 1;
+				}
+				break;
+			case "ifstarving":
+				if (c.getHungerLevel() == Critter.HungerLevel.valueOf("STARVING")) {
+					idx = Integer.parseInt(arr[-1]) - 1;
+				}
+				break;
+			case "ifempty":
+				if (c.getCellContent(Integer.parseInt(arr[1])) == c.EMPTY) {
+					idx = Integer.parseInt(arr[-1]) - 1;
+				}
+				break;
+			case "ifally":
+				if (c.getCellContent(Integer.parseInt(arr[1])) == c.ALLY) {
+					idx = Integer.parseInt(arr[-1]) - 1;
+				}
+				break;
+			case "ifenemy":
+				if (c.getCellContent(Integer.parseInt(arr[1])) == c.ENEMY) {
+					idx = Integer.parseInt(arr[-1]) - 1;
+				}
+				break;
+			case "ifwall":
+				if (c.getCellContent(Integer.parseInt(arr[1])) == c.WALL) {
+					idx = Integer.parseInt(arr[-1]) - 1;
+				}
+				break;
+			case "ifangle":
+				if (c.getOffAngle(Integer.parseInt(arr[1])) == Integer.parseInt(arr[2])) {
+					idx = Integer.parseInt(arr[-1]) - 1;
+				}
+				break;
+			case "write":
+				c.setReg(Integer.parseInt(arr[1]), Integer.parseInt(arr[-1]));
+				break;
+			case "add":
+				c.setReg(Integer.parseInt(arr[1]), c.getReg(Integer.parseInt(arr[1])) + c.getReg(Integer.parseInt(arr[-1])));
+				break;
+			case "sub":
+				c.setReg(Integer.parseInt(arr[1]), c.getReg(Integer.parseInt(arr[1])) - c.getReg(Integer.parseInt(arr[-1])));
+				break;
+			case "inc":
+				c.setReg(Integer.parseInt(arr[-1]), c.getReg(Integer.parseInt(arr[-1])) + 1);
+				break;
+			case "dec":
+				c.setReg(Integer.parseInt(arr[-1]), c.getReg(Integer.parseInt(arr[-1])) - 1);
+				break;
+			case "iflt":
+				if (c.getReg(arr[1]) < c.getReg(arr[2])){
+					idx = Integer.parseInt(arr[-1]) - 1;
+				}
+				break;
+			case "ifeq":
+				if (c.getReg(arr[1]) == c.getReg(arr[2])){
+					idx = Integer.parseInt(arr[-1]) - 1;
+				}
+				break;
+			case "ifgt":
+				if (c.getReg(arr[1]) > c.getReg(arr[2])){
+					idx = Integer.parseInt(arr[-1]) - 1;
 				}
 				break;
 		}
