@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Critter">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Critter.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
