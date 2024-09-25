@@ -1,0 +1,65 @@
+Moogloof
+ifenemy 0 32
+ifenemy 45 26
+ifenemy 315 28
+ifenemy 90 26
+ifenemy 270 28
+ifenemy 135 26
+ifenemy 225 28
+ifenemy 180 26
+ifally 0 54
+ifally 45 56
+ifally 315 54
+ifally 90 56
+ifally 270 54
+ifally 135 56
+ifally 225 54
+ifally 180 56
+ifempty 0 30
+ifempty 45 26
+ifempty 315 28
+ifempty 90 26
+ifempty 270 28
+ifempty 135 26
+ifempty 225 28
+ifempty 180 26
+ifrandom 28
+right
+go 1
+left
+go 1
+hop
+go 1
+ifhungry 35
+infect
+go 1
+eat
+go 1
+ifenemy 0 56
+ifenemy 45 54
+ifenemy 315 56
+ifenemy 90 54
+ifenemy 270 56
+ifenemy 135 54
+ifenemy 225 56
+ifenemy 180 54
+ifally 0 54
+ifally 45 56
+ifally 315 54
+ifally 90 56
+ifally 270 54
+ifally 135 56
+ifally 225 54
+ifally 180 56
+go 1
+right
+go 37
+left
+go 37
+ifhungry 62
+infect
+go 37
+eat
+go 37
+
+Moogloof is a combination of rover and flytrap.
