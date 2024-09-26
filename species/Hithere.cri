@@ -1,0 +1,32 @@
+Hithere
+ifenemy 0 24
+ifenemy 45 20
+ifenemy 315 18
+ifenemy 90 20
+ifenemy 270 18
+ifenemy 135 20
+ifenemy 225 18
+ifenemy 180 20
+ifempty 0 22
+ifempty 45 20
+ifempty 315 18
+ifempty 90 20
+ifempty 270 18
+ifempty 135 20
+ifempty 225 18
+ifempty 180 20
+ifrandom 20
+left
+go 1
+right
+go 1
+hop
+go 1
+ifhungry 27
+infect
+go 1
+eat
+go 1
+
+
+Hithere is a better version of Rover.

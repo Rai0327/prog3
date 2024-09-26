@@ -143,9 +143,6 @@ public class Interpreter implements CritterInterpreter {
 			while (!(line = reader.readLine()).equals("")) {
 				code.add(line);
 			}
-			for (int i = 0; i < code.size(); i++) {
-				System.out.println(code.get(i));
-			}
 			CritterSpecies crit = new CritterSpecies(name, code);
 			return crit;
 		} catch (IOException e) {
