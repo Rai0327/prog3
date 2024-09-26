@@ -15,10 +15,28 @@ public class Interpreter implements CritterInterpreter {
 
 	public void executeCritter(Critter c) {
 		// obviously, your code should do something
+		HashSet<Integer> angleSet = new HashSet<Integer>();
+		for (int num = 0; num <= 315; num += 45) {
+			angleSet.add(num);
+		}
+		if (c.getCode() == null) {
+			System.err.println("Null code list");
+			return;
+		}
+		if (c.getCode().size() <= 0) {
+			return;
+		}
+		if (c.getNextCodeLine() <= 0) {
+			System.err.println("Invalid initial next code line");
+		}
 		List code = c.getCode();
 		int startIdx = c.getNextCodeLine();
-		for (int i = startIdx; i < code.size(); i++) {
-			String line = (String) code.get(i);
+		for (int i = startIdx; i <= code.size(); i++) {
+			if (code.get(i - 1) == null) {
+				System.err.println("Null code list element");
+				return;
+			}
+			String line = (String) code.get(i - 1);
 			String[] arr = line.split(" ");
 			String str = arr[0];
 			switch (str) {
@@ -36,7 +54,11 @@ public class Interpreter implements CritterInterpreter {
 					return;
 				case "infect":
 					if (arr.length > 1) {
-						c.infect(Integer.parseInt(arr[arr.length - 1]));
+						int n = Integer.parseInt(arr[arr.length - 1]);
+						if (n >= code.size() || n <= 0) {
+							System.err.println("Invalid parameter input for infect at line " + i);
+						}
+						c.infect(n);
 					} else {
 						c.infect();
 					}
@@ -54,48 +76,48 @@ public class Interpreter implements CritterInterpreter {
 					} else if (arr[arr.length - 1].substring(0, 1).equals("r")) {
 						i = c.getReg(Integer.parseInt(arr[arr.length - 1].substring(1))) - 1;
 					} else {
-						i = Integer.parseInt(arr[arr.length - 1]) - 2;
+						i = Integer.parseInt(arr[arr.length - 1]) - 1;
 					}
 					break;
 				case "ifrandom":
 					if (c.ifRandom()) {
-						i = Integer.parseInt(arr[arr.length - 1]) - 2;
+						i = Integer.parseInt(arr[arr.length - 1]) - 1;
 					}
 					break;
 				case "ifhungry":
 					if (c.getHungerLevel() == Critter.HungerLevel.valueOf("HUNGRY")
 							|| c.getHungerLevel() == Critter.HungerLevel.valueOf("STARVING")) {
-						i = Integer.parseInt(arr[arr.length - 1]) - 2;
+						i = Integer.parseInt(arr[arr.length - 1]) - 1;
 					}
 					break;
 				case "ifstarving":
 					if (c.getHungerLevel() == Critter.HungerLevel.valueOf("STARVING")) {
-						i = Integer.parseInt(arr[arr.length - 1]) - 2;
+						i = Integer.parseInt(arr[arr.length - 1]) - 1;
 					}
 					break;
 				case "ifempty":
 					if (c.getCellContent(Integer.parseInt(arr[1])) == c.EMPTY) {
-						i = Integer.parseInt(arr[arr.length - 1]) - 2;
+						i = Integer.parseInt(arr[arr.length - 1]) - 1;
 					}
 					break;
 				case "ifally":
 					if (c.getCellContent(Integer.parseInt(arr[1])) == c.ALLY) {
-						i = Integer.parseInt(arr[arr.length - 1]) - 2;
+						i = Integer.parseInt(arr[arr.length - 1]) - 1;
 					}
 					break;
 				case "ifenemy":
 					if (c.getCellContent(Integer.parseInt(arr[1])) == c.ENEMY) {
-						i = Integer.parseInt(arr[arr.length - 1]) - 2;
+						i = Integer.parseInt(arr[arr.length - 1]) - 1;
 					}
 					break;
 				case "ifwall":
 					if (c.getCellContent(Integer.parseInt(arr[1])) == c.WALL) {
-						i = Integer.parseInt(arr[arr.length - 1]) - 2;
+						i = Integer.parseInt(arr[arr.length - 1]) - 1;
 					}
 					break;
 				case "ifangle":
 					if (c.getOffAngle(Integer.parseInt(arr[1])) == Integer.parseInt(arr[2])) {
-						i = Integer.parseInt(arr[arr.length - 1]) - 2;
+						i = Integer.parseInt(arr[arr.length - 1]) - 1;
 					}
 					break;
 				case "write":
@@ -115,17 +137,17 @@ public class Interpreter implements CritterInterpreter {
 					break;
 				case "iflt":
 					if (c.getReg(Integer.parseInt(arr[1])) < c.getReg(Integer.parseInt(arr[2]))) {
-						i = Integer.parseInt(arr[arr.length - 1]) - 2;
+						i = Integer.parseInt(arr[arr.length - 1]) - 1;
 					}
 					break;
 				case "ifeq":
 					if (c.getReg(Integer.parseInt(arr[1])) == c.getReg(Integer.parseInt(arr[2]))) {
-						i = Integer.parseInt(arr[arr.length - 1]) - 2;
+						i = Integer.parseInt(arr[arr.length - 1]) - 1;
 					}
 					break;
 				case "ifgt":
 					if (c.getReg(Integer.parseInt(arr[1])) > c.getReg(Integer.parseInt(arr[2]))) {
-						i = Integer.parseInt(arr[arr.length - 1]) - 2;
+						i = Integer.parseInt(arr[arr.length - 1]) - 1;
 					}
 					break;
 			}
