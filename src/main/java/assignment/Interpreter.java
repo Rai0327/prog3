@@ -15,6 +15,10 @@ public class Interpreter implements CritterInterpreter {
 
 	public void executeCritter(Critter c) {
 		// obviously, your code should do something
+		if (c == null) {
+			System.err.println("Null critter");
+			return;
+		}
 		HashSet<Integer> angleSet = new HashSet<Integer>();
 		for (int num = 0; num <= 315; num += 45) {
 			angleSet.add(num);
@@ -27,13 +31,17 @@ public class Interpreter implements CritterInterpreter {
 			return;
 		}
 		if (c.getNextCodeLine() <= 0) {
-			System.err.println("Invalid initial next code line");
+			System.err.println("Invalid next code line");
 		}
 		List code = c.getCode();
 		int startIdx = c.getNextCodeLine();
 		for (int i = startIdx; i <= code.size(); i++) {
 			if (code.get(i - 1) == null) {
 				System.err.println("Null code list element");
+				return;
+			}
+			if (!code.get(i - 1).getClass().getName().equals("java.lang.String")) {
+				System.err.println("Code element of invalid type");
 				return;
 			}
 			String line = (String) code.get(i - 1);
@@ -72,7 +80,7 @@ public class Interpreter implements CritterInterpreter {
 					if (arr.length > 1) {
 						int n = Integer.parseInt(arr[arr.length - 1]);
 						if (n >= code.size() || n <= 0) {
-							System.err.println("Invalid parameter input for infect at line " + i);
+							System.err.println("Invalid parameter input for infect");
 						}
 						c.infect(n);
 					} else {
@@ -382,7 +390,7 @@ public class Interpreter implements CritterInterpreter {
 			BufferedReader reader = new BufferedReader(fileReader);
 			String name = reader.readLine();
 			String line;
-			while (!(line = reader.readLine()).equals("")) {
+			while ((line = reader.readLine()) != null && !(line.equals(""))) {
 				code.add(line);
 			}
 			CritterSpecies crit = new CritterSpecies(name, code);

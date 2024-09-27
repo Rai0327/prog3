@@ -1,0 +1,15 @@
+NonRandomRover
+ifenemy 0 7
+ifempty 0 6
+left
+go 1
+hop
+go 1
+ifhungry 10
+infect
+go 1
+eat
+go 1
+
+
+This critter is Rover but without randomization for testing purposes.
