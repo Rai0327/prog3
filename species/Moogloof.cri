@@ -56,7 +56,7 @@ right
 go 37
 left
 go 37
-ifhungry 62
+ifhungry 61
 infect
 go 37
 eat

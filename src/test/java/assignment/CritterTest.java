@@ -18,4 +18,12 @@ public class CritterTest {
         interpreter.executeCritter(critter);
     }
 
+    @Test
+    public void hopTest() throws IOException {
+        Interpreter interpreter = new Interpreter();
+        CritterSpecies loadOutput = interpreter.loadSpecies("species/Hop.cri");
+        CritterImplementation critter = new CritterImplementation(loadOutput.getCode());
+        interpreter.executeCritter(critter);
+    }
+
 }
