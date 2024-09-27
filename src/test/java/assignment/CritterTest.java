@@ -12,6 +12,7 @@ import java.util.*;
 
 public class CritterTest {
 
+    // Test the executeCritter method for a null input
     @Test
     public void nullCritter() {
         Interpreter interpreter = new Interpreter();
@@ -21,6 +22,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when the code list is null
     @Test
     public void nullCode() {
         Interpreter interpreter = new Interpreter();
@@ -31,6 +33,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when the code list is empty
     @Test
     public void emptyCode() {
         Interpreter interpreter = new Interpreter();
@@ -41,6 +44,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when an element of the code list is empty
     @Test
     public void nullCodeElement() {
         Interpreter interpreter = new Interpreter();
@@ -53,6 +57,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when the set next code line is invalid (-1)
     @Test
     public void invalidGetNextCodeLine() throws IOException {
         Interpreter interpreter = new Interpreter();
@@ -65,6 +70,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when the code list has elements that are not Strings
     @Test
     public void invalidCodeType() {
         Interpreter interpreter = new Interpreter();
@@ -77,6 +83,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when the hop instruction has too many parameters
     @Test
     public void invalidHopParams() {
         Interpreter interpreter = new Interpreter();
@@ -89,6 +96,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when the left instruction has too many parameters
     @Test
     public void invalidLeftParams() {
         Interpreter interpreter = new Interpreter();
@@ -101,6 +109,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when the right instruction has too many parameters
     @Test
     public void invalidRightParams() {
         Interpreter interpreter = new Interpreter();
@@ -113,6 +122,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when infect has invalid or incorrectly formatted parameters
     @Test
     public void invalidInfectParams() {
         Interpreter interpreter = new Interpreter();
@@ -126,6 +136,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when eat has too many parameters
     @Test
     public void invalidEatParams() {
         Interpreter interpreter = new Interpreter();
@@ -138,6 +149,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when go has invalid or incorrectly formatted parameters
     @Test
     public void invalidGoParams() {
         Interpreter interpreter = new Interpreter();
@@ -153,6 +165,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when ifrandom has invalid or incorrectly formatted parameters
     @Test
     public void invalidIfRandomParams() {
         Interpreter interpreter = new Interpreter();
@@ -167,6 +180,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when ifhungry has invalid or incorrectly formatted parameters
     @Test
     public void invalidIfHungryParams() {
         Interpreter interpreter = new Interpreter();
@@ -181,6 +195,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when ifstarving has invalid or incorrectly formatted parameters
     @Test
     public void invalidIfStarvingParams() {
         Interpreter interpreter = new Interpreter();
@@ -195,6 +210,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when ifempty has invalid or incorrectly formatted parameters
     @Test
     public void invalidIfEmptyParams() {
         Interpreter interpreter = new Interpreter();
@@ -210,6 +226,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when ifally has invalid or incorrectly formatted parameters
     @Test
     public void invalidIfAllyParams() {
         Interpreter interpreter = new Interpreter();
@@ -225,6 +242,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when ifenemy has invalid or incorrectly formatted parameters
     @Test
     public void invalidIfEnemyParams() {
         Interpreter interpreter = new Interpreter();
@@ -240,6 +258,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when ifwall has invalid or incorrectly formatted parameters
     @Test
     public void invalidIfWallParams() {
         Interpreter interpreter = new Interpreter();
@@ -255,6 +274,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when ifangle has invalid or incorrectly formatted parameters
     @Test
     public void invalidIfAngleParams() {
         Interpreter interpreter = new Interpreter();
@@ -271,6 +291,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when write has invalid or incorrectly formatted parameters
     @Test
     public void invalidWriteParams() {
         Interpreter interpreter = new Interpreter();
@@ -287,6 +308,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when add has invalid or incorrectly formatted parameters
     @Test
     public void invalidAddParams() {
         Interpreter interpreter = new Interpreter();
@@ -305,6 +327,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when sub has invalid or incorrectly formatted parameters
     @Test
     public void invalidSubParams() {
         Interpreter interpreter = new Interpreter();
@@ -323,6 +346,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when inc has invalid or incorrectly formatted parameters
     @Test
     public void invalidIncParams() {
         Interpreter interpreter = new Interpreter();
@@ -340,6 +364,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when dec has invalid or incorrectly formatted parameters
     @Test
     public void invalidDecParams() {
         Interpreter interpreter = new Interpreter();
@@ -357,6 +382,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when iflt has invalid or incorrectly formatted parameters
     @Test
     public void invalidIfLTParams() {
         Interpreter interpreter = new Interpreter();
@@ -375,6 +401,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when ifeq has invalid or incorrectly formatted parameters
     @Test
     public void invalidIfEQParams() {
         Interpreter interpreter = new Interpreter();
@@ -393,6 +420,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when ifgt has invalid or incorrectly formatted parameters
     @Test
     public void invalidIfGTParams() {
         Interpreter interpreter = new Interpreter();
@@ -411,6 +439,7 @@ public class CritterTest {
         }
     }
 
+    // Test the executeCritter method when the code list has invalid critter instructions
     @Test
     public void invalidCode() {
         Interpreter interpreter = new Interpreter();
@@ -425,14 +454,17 @@ public class CritterTest {
         }
     }
 
+    // Test the loadSpecies method when an invalid file path is fed in
     @Test
     public void fileReadingTest() throws IOException {
         Interpreter interpreter = new Interpreter();
         CritterSpecies loadNullOutput = interpreter.loadSpecies(null);
         CritterSpecies loadGibberishOutput = interpreter.loadSpecies("aeiufnoisdbgpiqeurg");
+        // hopefully you don't happen to have a path like this
         CritterSpecies loadInvalidPathOutput = interpreter.loadSpecies("random/path/specified");
     }
 
+    // Test on the provided Hop critter and check if the right Critter methods are called
     @Test
     public void hopTest() throws IOException {
         ArrayList<String> ans = new ArrayList<String>();
@@ -447,6 +479,7 @@ public class CritterTest {
         assert(ans.equals(critter.getExecutedCode()));
     }
 
+    // Test on the provided Rover critter (without randomness) and check if the right Critter methods are called
     @Test
     public void nonRandomRoverTest() throws IOException {
         ArrayList<String> ans = new ArrayList<String>();
@@ -465,6 +498,7 @@ public class CritterTest {
         assert(ans.equals(critter.getExecutedCode()));
     }
 
+    // Test on an input file with empty code
     @Test
     public void empty() throws IOException {
         Interpreter interpreter = new Interpreter();
@@ -476,6 +510,7 @@ public class CritterTest {
         }
     }
 
+    // Test on an input file with gibberish text
     @Test
     public void gibberishFileTest() throws IOException {
         Interpreter interpreter = new Interpreter();
@@ -487,6 +522,7 @@ public class CritterTest {
         }
     }
 
+    // Test the upper bound of the for loop condition in the executeCritter method
     @Test
     public void loopEdgeTest() throws IOException {
         Interpreter interpreter = new Interpreter();
@@ -499,6 +535,7 @@ public class CritterTest {
         }
     }
 
+    // Test on an invalid go instruction (jump to a nonexistent line)
     @Test
     public void invalidGo() throws IOException {
         Interpreter interpreter = new Interpreter();
