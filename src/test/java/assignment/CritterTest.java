@@ -499,4 +499,15 @@ public class CritterTest {
         }
     }
 
+    @Test
+    public void invalidGo() throws IOException {
+        Interpreter interpreter = new Interpreter();
+        CritterSpecies loadOutput = interpreter.loadSpecies("species/InvalidGo.cri");
+        CritterImplementation critter = new CritterImplementation(loadOutput.getCode());
+        // run 10 steps of the simulation
+        for (int i = 0; i < 10; i++) {
+            interpreter.executeCritter(critter);
+        }
+    }
+
 }
