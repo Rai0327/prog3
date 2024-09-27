@@ -28,10 +28,12 @@ public class Interpreter implements CritterInterpreter {
 			return;
 		}
 		if (c.getCode().size() <= 0) {
+			System.err.println("Empty code list");
 			return;
 		}
 		if (c.getNextCodeLine() <= 0) {
 			System.err.println("Invalid next code line");
+			return;
 		}
 		List code = c.getCode();
 		int startIdx = c.getNextCodeLine();
