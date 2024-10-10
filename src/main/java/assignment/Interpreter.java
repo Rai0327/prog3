@@ -195,7 +195,7 @@ public class Interpreter implements CritterInterpreter {
 					break;
 				case "ifrandom":
 					//Checks the ifrandom call contains 2 parameters
-					if (arr.length != 2) {
+					if (arr.length != 1) {
 						System.err.println("Invalid ifrandom parameter setup");
 						return;
 					}
